@@ -12,10 +12,8 @@
 
 ## 사용 방법
 
-1.  **필수 라이브러리 설치:**
-    ```bash
-    pip install selenium webdriver-manager
-    ```
+1.  **필수 라이브러리 자동 설치:**
+    스크립트 실행 시 필요한 라이브러리(`selenium`, `webdriver-manager`)가 자동으로 설치됩니다. 인터넷 연결이 필요합니다.
 
 2.  **브라우저별 스크립트 실행:**
 
