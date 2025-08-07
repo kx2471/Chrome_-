@@ -4,8 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import platform
-import sys
-import subprocess
+# import sys # sys 모듈은 더 이상 필요하지 않으므로 제거
+# import subprocess # subprocess 모듈은 더 이상 필요하지 않으므로 제거
 
 # 주입할 JavaScript 코드
 JS_CODE = """
@@ -83,24 +83,10 @@ def inject_script(driver, script):
     except Exception as e:
         print(f"스크립트 주입 오류: {e}")
 
-def check_and_install_libraries():
-    required_libraries = ["selenium"]
-    # Safari는 webdriver-manager가 필요하지 않습니다.
-    for lib in required_libraries:
-        try:
-            __import__(lib)
-        except ImportError:
-            print(f"{lib} 라이브러리가 설치되어 있지 않습니다. 설치를 시도합니다...")
-            try:
-                subprocess.check_call([sys.executable, "-m", "pip", "install", lib])
-                print(f"{lib} 라이브러리 설치 완료.")
-            except subprocess.CalledProcessError as e:
-                print(f"오류: {lib} 라이브러리 설치에 실패했습니다. {e}")
-                print("pip가 올바르게 설치되어 있고 PATH에 추가되어 있는지 확인해주세요.")
-                sys.exit(1)
+# check_and_install_libraries 함수 제거
 
 def main():
-    check_and_install_libraries() # 라이브러리 설치 확인 및 설치
+    # check_and_install_libraries() # 라이브러리 설치 확인 및 설치 로직 제거
 
     if platform.system() != "Darwin":
         print("이 스크립트는 macOS에서만 실행할 수 있습니다 (Safari 브라우저).")

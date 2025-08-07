@@ -6,7 +6,7 @@ import platform
 import os
 import tempfile
 import shutil
-import sys
+# import sys # sys 모듈은 더 이상 필요하지 않으므로 제거
 
 # 주입할 JavaScript 코드
 JS_CODE = """
@@ -84,20 +84,7 @@ def inject_script(driver, script):
     except Exception as e:
         print(f"스크립트 주입 오류: {e}")
 
-def check_and_install_libraries():
-    required_libraries = ["selenium", "webdriver-manager"]
-    for lib in required_libraries:
-        try:
-            __import__(lib)
-        except ImportError:
-            print(f"{lib} 라이브러리가 설치되어 있지 않습니다. 설치를 시도합니다...")
-            try:
-                subprocess.check_call([sys.executable, "-m", "pip", "install", lib])
-                print(f"{lib} 라이브러리 설치 완료.")
-            except subprocess.CalledProcessError as e:
-                print(f"오류: {lib} 라이브러리 설치에 실패했습니다. {e}")
-                print("pip가 올바르게 설치되어 있고 PATH에 추가되어 있는지 확인해주세요.")
-                sys.exit(1)
+# check_and_install_libraries 함수 제거
 
 def find_chrome_executable():
     """운영체제에 따라 Chrome 실행 파일의 경로를 찾습니다.
@@ -192,7 +179,7 @@ def launch_chrome_for_debugging():
     return process, user_data_dir
 
 def main():
-    check_and_install_libraries() # 라이브러리 설치 확인 및 설치
+    # check_and_install_libraries() # 라이브러리 설치 확인 및 설치 로직 제거
 
     chrome_process = None
     user_data_dir = None
